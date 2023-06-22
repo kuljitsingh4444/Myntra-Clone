@@ -5,16 +5,10 @@ import Category from "../Filters/Category/Category";
 import Brand from "../Filters/Brand/Brand";
 import Price from "../Filters/Price/Price";
 import Color from "../Filters/Color/Color";
-import { useSelector, useDispatch } from "react-redux";
 
 const SideCar = () => {
-
-  const { response, filters } = useSelector(state => state.reducer)
-  const dispatch = useDispatch()
-
-
   return (
-    <div className="side-car">
+    <div className="side-cart">
       <Gener></Gener>
       <div className="separator"></div>
       <Category></Category>

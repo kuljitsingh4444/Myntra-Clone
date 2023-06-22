@@ -1,37 +1,27 @@
 import { useState } from "react";
 import Radio from "../../common/radio/radio";
 import "./Discounts.css";
+import { useDispatch } from "react-redux";
+import Types from "../../../duck/types";
 
-const DISCOUNT_10 = "10% and above";
-const DISCOUNT_20 = "20% and above";
-const DISCOUNT_30 = "30% and above";
-const DISCOUNT_40 = "40% and above";
-const DISCOUNT_50 = "50% and above";
-const DISCOUNT_60 = "60% and above";
-const DISCOUNT_70 = "70% and above";
-const DISCOUNT_80 = "80% and above";
-const DISCOUNT_90 = "90% and above";
-
-const DISCOUNT_LIST = [
-  DISCOUNT_10,
-  DISCOUNT_20,
-  DISCOUNT_30,
-  DISCOUNT_40,
-  DISCOUNT_50,
-  DISCOUNT_60,
-  DISCOUNT_70,
-  DISCOUNT_80,
-  DISCOUNT_90,
-];
+let discount = {}
+for(let i=10; i < 100; i += 10){
+  discount[`${i}% and above`] = i
+}
 
 const Discounts = () => {
   const [selected, setSelected] = useState("");
+  const dispatch = useDispatch()
 
   const updateCheck = (text) => {
     setSelected(text);
+    dispatch({
+      type: Types.UPDATE_FILTERS,
+      data: { field: "discount", value: discount[text] }
+    })
   };
 
-  return DISCOUNT_LIST.map((item) => {
+  return Object.keys(discount).map((item) => {
     return (
       <div key={item} className="discount-item">
         <Radio

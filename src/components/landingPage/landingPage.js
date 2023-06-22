@@ -32,7 +32,7 @@ const LandingPage = () => {
           {
             itemsList?.length && itemsList.map((item, index) => {
               return(
-                <div className="myntra-item" key={index}>
+                <div key={index}>
                   <img className="item-image" src={item.image}></img>
                   <div className="item-detail">
                     <div className="item-brand">{item.brand}</div>

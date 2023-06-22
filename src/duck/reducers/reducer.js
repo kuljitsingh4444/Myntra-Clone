@@ -29,10 +29,9 @@ export default function (state = initialState, action) {
       console.log(state.response)
 
       displayList = state.response.filter(listItem => {
-        // gener filter
-        if(newFilters.gener && listItem.gener == newFilters.gener) {
-          return true
-        }
+        const generFilter = newFilters.gener ? listItem.gener == newFilters.gener : true
+        const discountFilter = newFilters.discount ? (newFilters.discount <= listItem.discount && listItem.discount <= 100) : true
+        return generFilter && discountFilter
       })
 
 

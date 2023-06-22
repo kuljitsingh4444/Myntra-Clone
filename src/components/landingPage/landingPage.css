@@ -14,9 +14,8 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 60px;
   padding: 20px;
+  height: fit-content;
 }
-
-.myntra-item {}
 
 .item-image {
   width: 200px;
