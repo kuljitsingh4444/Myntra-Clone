@@ -1,0 +1,24 @@
+input[type="checkbox"] {
+  accent-color: #ff3f6c;
+  width: 17px;
+  height: 17px;
+  border-radius: 17px;
+  margin: 0px;
+}
+
+.checkbox-contents {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.sample-view {
+  min-height: 12px;
+  min-width: 12px;
+  max-height: 12px;
+  max-width: 12px;
+  border-radius: 50%;
+  border: 1px solid silver;
+}

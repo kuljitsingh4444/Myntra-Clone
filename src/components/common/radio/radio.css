@@ -1,0 +1,15 @@
+input[type="radio"] {
+  accent-color: #ff3f6c;
+  width: 17px;
+  height: 17px;
+  border-radius: 17px;
+  margin: 0px;
+}
+
+.radio-contents {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+}

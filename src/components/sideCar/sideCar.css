@@ -1,0 +1,26 @@
+.side-car {
+  width: 270px;
+  border-right: 1px solid #f0f0f0;
+  height: 100%;
+  height: calc(100vh - 130px);
+  margin: 0px 20px 0px 20px;
+  padding: 20px 0px;
+}
+
+.head-filters {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.side-header {
+  margin: 25px 0px;
+  font-weight: 500;
+}
+
+.separator {
+  height: 1px;
+  width: 100%;
+  border-top: 1px solid #f0f0f0;
+}
