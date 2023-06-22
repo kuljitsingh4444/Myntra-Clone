@@ -1,33 +1,38 @@
+export const generValues = ["men", "women", "boys", "girls"];
+
+export const categoryValues = [
+  "tshirts",
+  "shirts",
+  "jeans",
+  "jackets",
+  "sweaters",
+  "sweatshirts",
+];
+
+ export const brandValues = [
+  "puma",
+  "roadster",
+  "bata",
+  "flite",
+  "crocs",
+  "redtape",
+  "woodland",
+];
+
+export const colorValues = [
+  "white",
+  "black",
+  "navyblue",
+  "grey",
+  "brown",
+  "tan",
+  "blue",
+];
+
+export const discountValues = [11, 22, 33, 44, 55, 66, 77, 88, 92];
+
 export const getListData = () => {
   return new Promise((resolve) => {
-    let generValues = ["men", "women", "boys", "girls"];
-    let categoryValues = [
-      "tshirts",
-      "shirts",
-      "jeans",
-      "jackets",
-      "sweaters",
-      "sweatshirts",
-    ];
-    let brandValues = [
-      "puma",
-      "roadster",
-      "bata",
-      "flite",
-      "crocs",
-      "redtape",
-      "woodland",
-    ];
-    let colorValues = [
-      "white",
-      "black",
-      "navyblue",
-      "grey",
-      "brown",
-      "tan",
-      "blue",
-    ];
-    let discountValues = [11, 22, 33, 44, 55, 66, 77, 88, 92];
     let imageValues = [
       "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/19043284/2022/7/11/d1835e4d-e075-49a9-ac37-f235eea9e3cb1657506593191SHEETALAssociatesBlackSheathMidiDress1.jpg",
       "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/9838377/2019/7/12/78179e92-0f78-4fca-8eb5-b0ca44a060b01562927656990-HIGHLANDER-Men-Black-Solid-Slim-Fit-Track-Pants-270156292765-1.jpg",

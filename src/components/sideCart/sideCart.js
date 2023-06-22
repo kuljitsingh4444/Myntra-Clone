@@ -1,12 +1,18 @@
-import "./sideCar.css";
+import "./sideCart.css";
 import Gener from "../Filters/Gener/Gener";
 import Discounts from "../Filters/Discounts/Discounts";
 import Category from "../Filters/Category/Category";
 import Brand from "../Filters/Brand/Brand";
 import Price from "../Filters/Price/Price";
 import Color from "../Filters/Color/Color";
+import { useSelector, useDispatch } from "react-redux";
 
-const sideCar = () => {
+const SideCar = () => {
+
+  const { response, filters } = useSelector(state => state.reducer)
+  const dispatch = useDispatch()
+
+
   return (
     <div className="side-car">
       <Gener></Gener>
@@ -25,4 +31,4 @@ const sideCar = () => {
   );
 };
 
-export default sideCar;
+export default SideCar;

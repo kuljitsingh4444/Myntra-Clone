@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./landingPage.css";
 import Header from "../header/header";
-import SideCar from "../sideCar/sideCar";
-import { getListData } from "../../helpers/mockFetch";
+import SideCart from "../sideCart/sideCart";
+import { getListData } from "../../helpers/mock";
 import { useSelector, useDispatch } from "react-redux";
 import Types from "../../duck/types";
 
 const LandingPage = () => {
   const dispatch = useDispatch()
-  const itemsList = useSelector(state => state.reducer.response)
-  console.log(itemsList)
+  const state = useSelector(state => state)
+  console.log(state)
+  console.log("_state above")
+  const itemsList = state.reducer.displayList
 
   const setDataToRedux = () => {
     getListData().then((response) => {
@@ -25,7 +27,7 @@ const LandingPage = () => {
     <div className="all-contents">
       <Header></Header>
       <div className="page-contents">
-        <SideCar></SideCar>
+        <SideCart></SideCart>
         <div className="sellable-content">
           {
             itemsList?.length && itemsList.map((item, index) => {

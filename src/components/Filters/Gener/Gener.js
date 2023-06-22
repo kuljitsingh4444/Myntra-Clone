@@ -1,21 +1,21 @@
 import { useState } from "react";
 import Radio from "../../common/radio/radio";
 import "./Gener.css";
-
-const GENER_MEN = "Men";
-const GENER_WOMEN = "Women";
-const GENER_BOYS = "Boys";
-const GENER_GIRLS = "Girls";
-const GENER_LIST = [GENER_MEN, GENER_WOMEN, GENER_BOYS, GENER_GIRLS];
+import { useDispatch } from "react-redux";
+import types from "../../../duck/types";
+import { generValues } from "../../../helpers/mock";
 
 const Gener = () => {
   const [selected, setSelected] = useState("");
+  const dispatch = useDispatch()
+  
 
   const updateCheck = (text) => {
     setSelected(text);
+    dispatch({ type: types.UPDATE_FILTERS, data: { field: "gener", value: text } })
   };
 
-  return GENER_LIST.map((item) => {
+  return generValues.map((item) => {
     return (
       <div key={item} className="list-item">
         <Radio
