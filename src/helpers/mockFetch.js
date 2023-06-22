@@ -41,7 +41,7 @@ export const getListData = () => {
 
     let response = [];
 
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 300; i++) {
       let obj = {
         gener: generValues[Math.floor(Math.random() * generValues.length)],
         category:

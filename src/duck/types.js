@@ -1,5 +1,5 @@
-const ADD_COMMENT = "ADD_COMMENT";
+const UPDATE_RESPONSE = "UPDATE_RESPONSE";
 
 export default {
-  ADD_COMMENT,
+  UPDATE_RESPONSE,
 };
