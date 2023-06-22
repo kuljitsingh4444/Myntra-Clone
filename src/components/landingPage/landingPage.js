@@ -16,8 +16,6 @@ const options = [
 const LandingPage = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  console.log("check_state");
-  console.log(state);
 
   const itemsList = state.reducer.displayList;
   const setDataToRedux = () => {

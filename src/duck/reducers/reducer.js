@@ -74,10 +74,9 @@ const handleFilters = (state, action) => {
     );
   });
 
-  console.log("_newFilters");
-  console.log(newFilters);
+  const currentSortBy = newFilters.sortBy.value
   const sortedDisplayList = displayList.toSorted(
-    (a, b) => b[newFilters.sortBy.value] - a[newFilters.sortBy.value]
+    (a, b) => b[currentSortBy] - a[currentSortBy]
   );
 
   return {
@@ -91,12 +90,13 @@ const handleFilters = (state, action) => {
 export default function (state = initialState, action) {
   switch (action.type) {
     case Types.UPDATE_RESPONSE:
+      const currentSortBy = state.filters.sortBy.value
       return {
         ...state,
         response: action.data,
         displayList: action.data.toSorted(
           (a, b) =>
-            b[state.filters.sortBy.value] - a[state.filters.sortBy.value]
+            b[currentSortBy] - a[currentSortBy]
         ),
       };
 
