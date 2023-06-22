@@ -1,21 +1,13 @@
 import MultiSelect from "../../common/multiSelect/multiSelect";
-
-const BRAND_LIST = [
-  "Puma",
-  "Roadster",
-  "Bata",
-  "Flite",
-  "Crocs",
-  "Red Tape",
-  "Wood Land",
-];
+import { brandValues } from "../../../helpers/mock";
 
 const Category = () => {
   return (
     <MultiSelect
+      field={"brands"}
       title={"BRAND"}
       searchEnabled={true}
-      list={BRAND_LIST}
+      list={brandValues}
     ></MultiSelect>
   );
 };

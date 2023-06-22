@@ -19,15 +19,14 @@ export const categoryValues = [
   "woodland",
 ];
 
-export const colorValues = [
-  "white",
-  "black",
-  "navyblue",
-  "grey",
-  "brown",
-  "tan",
-  "blue",
-];
+export const colorValues = {
+  "white": "rgb(255, 255, 255)",
+  "black": "rgb(54, 69, 79)",
+  "grey": "rgb(159, 168, 171)",
+  "brown": "rgb(145, 80, 57)",
+  "tan": "rgb(210, 180, 140)",
+  "blue": "rgb(0, 116, 217)"
+};
 
 export const discountValues = [11, 22, 33, 44, 55, 66, 77, 88, 92];
 
@@ -53,7 +52,7 @@ export const getListData = () => {
           categoryValues[Math.floor(Math.random() * categoryValues.length)],
         brand: brandValues[Math.floor(Math.random() * brandValues.length)],
         price: Math.floor(Math.random() * (5000 - 500 + 1)) + 500,
-        color: colorValues[Math.floor(Math.random() * colorValues.length)],
+        color: Object.keys(colorValues)[Math.floor(Math.random() * Object.keys(colorValues).length)],
         discount:
           discountValues[Math.floor(Math.random() * discountValues.length)],
         image: imageValues[Math.floor(Math.random() * imageValues.length)],

@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import Checkbox from "../../common/checkbox/checkbox";
 import Search from "../../../assets/images/search.png";
 import "./multiSelect.css";
+import Types from "../../../duck/types";
+import { useDispatch } from "react-redux";
 
-const Category = ({ list, title, searchEnabled, viewSample }) => {
+const MultiSelect = ({ list, title, searchEnabled, viewSample, field }) => {
   const [selected, setSelected] = useState("");
   const [displayList, setDisplayList] = useState([]);
   const [showSearchText, setShowSearchText] = useState(false);
   const [text, setText] = useState("");
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const updatedList = list.filter((item) => {
@@ -16,12 +19,19 @@ const Category = ({ list, title, searchEnabled, viewSample }) => {
     setDisplayList(updatedList);
   }, [list, text]);
 
+  const setSelectedList = (list) => {
+    setSelected(list)
+    if(field){
+      dispatch({ type: Types.UPDATE_FILTERS, data: { field: field, value: list } })
+    }
+  }
+
   const updateCheck = (text) => {
     if (selected.indexOf(text) == -1) {
-      setSelected([text, ...selected]);
+      setSelectedList([text, ...selected]);
     } else {
       const updatedSelectedList = selected.filter((item) => item != text);
-      setSelected(updatedSelectedList);
+      setSelectedList(updatedSelectedList);
     }
   };
 
@@ -40,7 +50,7 @@ const Category = ({ list, title, searchEnabled, viewSample }) => {
 
   const handleChange = (e) => {
     setText(e.target.value);
-    setSelected([]);
+    setSelectedList([]);
   };
 
   const getInput = () => {
@@ -96,4 +106,4 @@ const Category = ({ list, title, searchEnabled, viewSample }) => {
   );
 };
 
-export default Category;
+export default MultiSelect;

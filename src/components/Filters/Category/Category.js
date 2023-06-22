@@ -1,21 +1,14 @@
 import MultiSelect from "../../common/multiSelect/multiSelect";
+import { categoryValues } from "../../../helpers/mock";
 import "./Category.css";
-
-const CATEGORY_LIST = [
-  "Tshirts",
-  "Shirts",
-  "Jeans",
-  "jackets",
-  "Sweaters",
-  "Sweatshirts",
-];
 
 const Category = () => {
   return (
     <MultiSelect
+      field={"categories"}
       title={"CATEGORIES"}
       searchEnabled={true}
-      list={CATEGORY_LIST}
+      list={categoryValues}
     ></MultiSelect>
   );
 };
