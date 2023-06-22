@@ -4,6 +4,7 @@ input[type="checkbox"] {
   height: 17px;
   border-radius: 17px;
   margin: 0px;
+  cursor: pointer;
 }
 
 .checkbox-contents {

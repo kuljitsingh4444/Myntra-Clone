@@ -4,6 +4,7 @@ input[type="radio"] {
   height: 17px;
   border-radius: 17px;
   margin: 0px;
+  cursor: pointer;
 }
 
 .radio-contents {

@@ -39,6 +39,11 @@ const LandingPage = () => {
     <div className="all-contents">
       <Header></Header>
       <div className="page-head-components">
+        <div className="filters-heading">
+          <div>FILTERS</div>
+          <div>CLEAR ALL</div>
+          <div>FIX THIS</div>
+        </div>
         <div className="dropdown-container">
           <Dropdown
             currentValue={state.reducer.filters.sortBy}
