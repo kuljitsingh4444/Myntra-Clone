@@ -1,9 +1,10 @@
 import Types from "../types";
+import { PRICE, getUpperLimit } from "../../helpers/mock";
 
 const initialState = {
   response: [],
   filters: {},
-  displayList: []
+  displayList: [],
 };
 
 export default function (state = initialState, action) {
@@ -12,40 +13,81 @@ export default function (state = initialState, action) {
       return {
         ...state,
         response: action.data,
-        displayList: action.data
+        displayList: action.data,
       };
 
     case Types.UPDATE_FILTERS:
-      let displayList = []
+      let displayList = [];
 
-      const newFilters = { 
+      const newFilters = {
         ...state.filters,
-        [action.data.field] : action.data.value
+        [action.data.field]: action.data.value,
+      };
+
+      let priceRanges = [];
+      if (newFilters.price && newFilters.price.length) {
+        for (let i = 0; i < newFilters.price.length; i++) {
+          let lowerLimit = PRICE[newFilters.price[i]];
+          priceRanges[i] = {
+            lower: lowerLimit,
+            upper: getUpperLimit(lowerLimit),
+          };
+        }
       }
-      
-      console.log("checkit")
-      console.log(action)
-      console.log(newFilters)
-      console.log(displayList)
-      console.log(state.response)
 
-      displayList = state.response.filter(listItem => {
-        const generFilter = newFilters.gener && newFilters.gener ? listItem.gener == newFilters.gener : true
-        const discountFilter = newFilters.discount && newFilters.discount ? (newFilters.discount <= listItem.discount && listItem.discount <= 100) : true
-        const categoriesFilter = newFilters.categories && newFilters.categories.length ? newFilters.categories.includes(listItem.category) : true
-        const brandsFilter = newFilters.brands && newFilters.brands.length ? newFilters.brands.includes(listItem.brand) : true
-        const colorsFilter = newFilters.colors && newFilters.colors.length ? newFilters.colors.includes(listItem.color) : true
+      displayList = state.response.filter((listItem) => {
+        let inRange = false;
+        const generFilter =
+          newFilters.gener && newFilters.gener
+            ? listItem.gener == newFilters.gener
+            : true;
+        const discountFilter =
+          newFilters.discount && newFilters.discount
+            ? newFilters.discount <= listItem.discount &&
+              listItem.discount <= 100
+            : true;
+        const categoriesFilter =
+          newFilters.categories && newFilters.categories.length
+            ? newFilters.categories.includes(listItem.category)
+            : true;
+        const brandsFilter =
+          newFilters.brands && newFilters.brands.length
+            ? newFilters.brands.includes(listItem.brand)
+            : true;
+        const colorsFilter =
+          newFilters.colors && newFilters.colors.length
+            ? newFilters.colors.includes(listItem.color)
+            : true;
 
-        return generFilter && discountFilter && categoriesFilter && brandsFilter && colorsFilter
-      })
+        for (let k = 0; k < priceRanges.length; k++) {
+          let lowerLimit = priceRanges[k].lower;
+          let upperLimit = priceRanges[k].upper;
 
+          if (listItem.price >= lowerLimit && listItem.price <= upperLimit) {
+            inRange = true;
+            break;
+          }
+        }
+
+        const priceFilter =
+          newFilters.price && newFilters.price.length ? inRange : true;
+
+        return (
+          generFilter &&
+          discountFilter &&
+          categoriesFilter &&
+          brandsFilter &&
+          colorsFilter &&
+          priceFilter
+        );
+      });
 
       return {
         ...state,
         response: state.response,
         filters: newFilters,
-        displayList
-      }
+        displayList,
+      };
 
     default:
       return state;

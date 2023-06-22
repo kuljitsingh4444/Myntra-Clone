@@ -1,3 +1,5 @@
+// MOCK DATA
+
 export const generValues = ["men", "women", "boys", "girls"];
 
 export const categoryValues = [
@@ -9,7 +11,7 @@ export const categoryValues = [
   "sweatshirts",
 ];
 
- export const brandValues = [
+export const brandValues = [
   "puma",
   "roadster",
   "bata",
@@ -20,15 +22,32 @@ export const categoryValues = [
 ];
 
 export const colorValues = {
-  "white": "rgb(255, 255, 255)",
-  "black": "rgb(54, 69, 79)",
-  "grey": "rgb(159, 168, 171)",
-  "brown": "rgb(145, 80, 57)",
-  "tan": "rgb(210, 180, 140)",
-  "blue": "rgb(0, 116, 217)"
+  white: "rgb(255, 255, 255)",
+  black: "rgb(54, 69, 79)",
+  grey: "rgb(159, 168, 171)",
+  brown: "rgb(145, 80, 57)",
+  tan: "rgb(210, 180, 140)",
+  blue: "rgb(0, 116, 217)",
 };
 
 export const discountValues = [11, 22, 33, 44, 55, 66, 77, 88, 92];
+
+export const PRICE = {
+  "Upto Rs.500": 0,
+  "Rs.500 - Rs.1000": 500,
+  "Rs.1000 - Rs.1500": 1000,
+  "Rs.1500 - Rs.2000": 1500,
+  "Rs.2000 - Rs.2500": 2000,
+  "Rs.2500+": 2500,
+};
+
+export const getUpperLimit = (lowerLimit) => {
+  if (lowerLimit === 2500) {
+    return Number.MAX_SAFE_INTEGER;
+  }
+
+  return lowerLimit + 500;
+};
 
 export const getListData = () => {
   return new Promise((resolve) => {
@@ -52,7 +71,10 @@ export const getListData = () => {
           categoryValues[Math.floor(Math.random() * categoryValues.length)],
         brand: brandValues[Math.floor(Math.random() * brandValues.length)],
         price: Math.floor(Math.random() * (5000 - 500 + 1)) + 500,
-        color: Object.keys(colorValues)[Math.floor(Math.random() * Object.keys(colorValues).length)],
+        color:
+          Object.keys(colorValues)[
+            Math.floor(Math.random() * Object.keys(colorValues).length)
+          ],
         discount:
           discountValues[Math.floor(Math.random() * discountValues.length)],
         image: imageValues[Math.floor(Math.random() * imageValues.length)],

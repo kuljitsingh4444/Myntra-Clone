@@ -7,12 +7,14 @@ import { generValues } from "../../../helpers/mock";
 
 const Gener = () => {
   const [selected, setSelected] = useState("");
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
 
   const updateCheck = (text) => {
     setSelected(text);
-    dispatch({ type: types.UPDATE_FILTERS, data: { field: "gener", value: text } })
+    dispatch({
+      type: types.UPDATE_FILTERS,
+      data: { field: "gener", value: text },
+    });
   };
 
   return generValues.map((item) => {

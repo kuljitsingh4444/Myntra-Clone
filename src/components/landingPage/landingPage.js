@@ -7,20 +7,18 @@ import { useSelector, useDispatch } from "react-redux";
 import Types from "../../duck/types";
 
 const LandingPage = () => {
-  const dispatch = useDispatch()
-  const state = useSelector(state => state)
-  console.log(state)
-  console.log("_state above")
-  const itemsList = state.reducer.displayList
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const itemsList = state.reducer.displayList;
 
   const setDataToRedux = () => {
     getListData().then((response) => {
-      dispatch({ type: Types.UPDATE_RESPONSE, data: response })
+      dispatch({ type: Types.UPDATE_RESPONSE, data: response });
     });
-  }
+  };
 
   useEffect(() => {
-    setDataToRedux()
+    setDataToRedux();
   }, []);
 
   return (
@@ -29,9 +27,9 @@ const LandingPage = () => {
       <div className="page-contents">
         <SideCart></SideCart>
         <div className="sellable-content">
-          {
-            itemsList?.length && itemsList.map((item, index) => {
-              return(
+          {itemsList?.length &&
+            itemsList.map((item, index) => {
+              return (
                 <div key={index}>
                   <img className="item-image" src={item.image}></img>
                   <div className="item-detail">
@@ -45,9 +43,8 @@ const LandingPage = () => {
                     </div>
                   </div>
                 </div>
-              )
-            })
-          }
+              );
+            })}
         </div>
       </div>
     </div>

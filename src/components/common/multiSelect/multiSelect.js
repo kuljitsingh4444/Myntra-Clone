@@ -10,7 +10,7 @@ const MultiSelect = ({ list, title, searchEnabled, viewSample, field }) => {
   const [displayList, setDisplayList] = useState([]);
   const [showSearchText, setShowSearchText] = useState(false);
   const [text, setText] = useState("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const updatedList = list.filter((item) => {
@@ -20,11 +20,14 @@ const MultiSelect = ({ list, title, searchEnabled, viewSample, field }) => {
   }, [list, text]);
 
   const setSelectedList = (list) => {
-    setSelected(list)
-    if(field){
-      dispatch({ type: Types.UPDATE_FILTERS, data: { field: field, value: list } })
+    setSelected(list);
+    if (field) {
+      dispatch({
+        type: Types.UPDATE_FILTERS,
+        data: { field: field, value: list },
+      });
     }
-  }
+  };
 
   const updateCheck = (text) => {
     if (selected.indexOf(text) == -1) {

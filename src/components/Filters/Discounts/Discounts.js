@@ -4,21 +4,21 @@ import "./Discounts.css";
 import { useDispatch } from "react-redux";
 import Types from "../../../duck/types";
 
-let discount = {}
-for(let i=10; i < 100; i += 10){
-  discount[`${i}% and above`] = i
+let discount = {};
+for (let i = 10; i < 100; i += 10) {
+  discount[`${i}% and above`] = i;
 }
 
 const Discounts = () => {
   const [selected, setSelected] = useState("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const updateCheck = (text) => {
     setSelected(text);
     dispatch({
       type: Types.UPDATE_FILTERS,
-      data: { field: "discount", value: discount[text] }
-    })
+      data: { field: "discount", value: discount[text] },
+    });
   };
 
   return Object.keys(discount).map((item) => {
