@@ -78,9 +78,10 @@ export const getListData = () => {
         discount:
           discountValues[Math.floor(Math.random() * discountValues.length)],
         image: imageValues[Math.floor(Math.random() * imageValues.length)],
-        isPopular: Math.random() < 0.5, // Generates true or false randomly,
-        isTrending: Math.random() < 0.5,
-        isRecommended: Math.random() < 0.5,
+        popularityScore: Math.floor(Math.random() * 10) + 1,
+        trendingScore: Math.floor(Math.random() * 10) + 1,
+        recommendationScore: Math.floor(Math.random() * 10) + 1,
+        rating: Math.floor(Math.random() * 5) + 1,
       };
       response.push(obj);
     }
