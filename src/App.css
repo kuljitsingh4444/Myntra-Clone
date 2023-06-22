@@ -3,3 +3,11 @@
   padding: 0px;
   font-size: 14px;
 }
+
+.options-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
+  margin-top: 5px;
+}

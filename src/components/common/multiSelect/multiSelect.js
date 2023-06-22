@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Checkbox from "../../common/checkbox/checkbox";
+import Search from "../../../assets/images/search.png";
 import "./multiSelect.css";
 
 const Category = ({ list, title, searchEnabled, viewSample }) => {
@@ -29,8 +30,8 @@ const Category = ({ list, title, searchEnabled, viewSample }) => {
       <React.Fragment>
         <div className="title-ms">{title}</div>
         {searchEnabled && (
-          <div className="search-icon" onClick={() => setShowSearchText(true)}>
-            &#x1F50E;
+          <div onClick={() => setShowSearchText(true)}>
+            <img className="search-icon" src={Search} />
           </div>
         )}
       </React.Fragment>
@@ -51,9 +52,13 @@ const Category = ({ list, title, searchEnabled, viewSample }) => {
           placeholder="Search by name"
           className="search-text"
         ></input>
-        <div onClick={() => {
-            setShowSearchText(false); setText('');
-        }} className="close-search">
+        <div
+          onClick={() => {
+            setShowSearchText(false);
+            setText("");
+          }}
+          className="close-search"
+        >
           &#x2715;
         </div>
       </div>
@@ -61,36 +66,32 @@ const Category = ({ list, title, searchEnabled, viewSample }) => {
   };
 
   const renderList = () => {
-    return(
+    return (
       <React.Fragment>
-            {
-      displayList.length
-      ? displayList.map((item, index) => {
-          return (
-            <div key={index} className="discount-item">
-              <Checkbox
-                viewSample={viewSample ? viewSample[item]: null}
-                updateToParent={updateCheck}
-                checked={selected.includes(item)}
-                text={item}
-              ></Checkbox>
-            </div>
-          );
-        })
-      : `Not found!`
-    }
+        {displayList.length
+          ? displayList.map((item, index) => {
+              return (
+                <div key={index} className="item">
+                  <Checkbox
+                    viewSample={viewSample ? viewSample[item] : null}
+                    updateToParent={updateCheck}
+                    checked={selected.includes(item)}
+                    text={item}
+                  ></Checkbox>
+                </div>
+              );
+            })
+          : `Not found!`}
       </React.Fragment>
-    )
-  }
+    );
+  };
 
   return (
-    <div className="all-multiselect">
-      <div className={showSearchText ? "options" : "options"}>
+    <div className="all-multiselect-contents">
+      <div className={"options-header"}>
         {showSearchText ? getInput() : getOptions()}
       </div>
-      <div>
-        {renderList()}
-      </div>
+      <div>{renderList()}</div>
     </div>
   );
 };

@@ -1,14 +1,13 @@
 import MultiSelect from "../../common/multiSelect/multiSelect";
 
-
 const BRAND_LIST = [
   "Puma",
   "Roadster",
   "Bata",
-  "FLits",
+  "Flite",
   "Crocs",
   "Red Tape",
-  "Wood Land"
+  "Wood Land",
 ];
 
 const Category = () => {

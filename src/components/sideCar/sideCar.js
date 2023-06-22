@@ -12,10 +12,14 @@ const sideCar = () => {
       <Gener></Gener>
       <div className="separator"></div>
       <Category></Category>
+      <div className="separator"></div>
       <Brand></Brand>
+      <div className="separator"></div>
       <Price></Price>
+      <div className="separator"></div>
       <Color></Color>
-      <div className="side-header">DISCOUNT RANGE</div>
+      <div className="separator"></div>
+      <div className="side-header options-header">DISCOUNT RANGE</div>
       <Discounts></Discounts>
     </div>
   );

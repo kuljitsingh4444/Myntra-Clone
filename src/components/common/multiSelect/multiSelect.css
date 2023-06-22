@@ -1,13 +1,6 @@
-.options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 55px;
-  margin-top: 5px;
-}
-
-.all-multiselect {
+.all-multiselect-contents {
   margin-right: 20px;
+  margin: 0px 20px 0px 28px
 }
 
 .title-ms {
@@ -25,6 +18,10 @@
 
 .search-icon {
   cursor: pointer;
+  height: 18px;
+  background: #f0f0f0;
+  border-radius: 50%;
+  padding: 7px;
 }
 
 .input-with-suffix {
@@ -40,4 +37,9 @@
   margin-right: 4px;
   cursor: pointer;
   font-size: 17px;
+}
+
+.item {
+  margin: 10px 0px 0px 0px;
+  font-weight: 300;
 }
