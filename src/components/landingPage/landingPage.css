@@ -78,3 +78,30 @@
 .sellable-container {
   width: 100%;
 }
+
+.image-contents {
+  position: relative;
+}
+
+.overlay-items {
+  position: absolute;
+  bottom: 15px;
+  left: 12px;
+  background: hsla(0, 0%, 100%, .5);
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: black;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.rating {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.star-icon {
+  color: green;
+  font-size: 16px;
+}

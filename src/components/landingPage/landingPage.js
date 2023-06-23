@@ -75,7 +75,13 @@ const LandingPage = () => {
                   itemsList.map((item, index) => {
                     return (
                       <div key={index}>
-                        <img className="item-image" src={item.image}></img>
+                        <div className="image-contents">
+                          <img className="item-image" src={item.image}></img>
+                          <div className="overlay-items">
+                            <div className="rating">{item.rating}</div>
+                            <div className="star-icon">&#9733;</div>
+                          </div>
+                        </div>
                         <div className="item-detail">
                           <div className="item-brand">{item.brand}</div>
                           <div className="shade">

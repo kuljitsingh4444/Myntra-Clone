@@ -81,7 +81,7 @@ export const getListData = () => {
         popularityScore: Math.floor(Math.random() * 10) + 1,
         trendingScore: Math.floor(Math.random() * 10) + 1,
         recommendationScore: Math.floor(Math.random() * 10) + 1,
-        rating: Math.floor(Math.random() * 5) + 1,
+        rating: parseFloat((Math.random() * 4 + 1).toFixed(1))
       };
       response.push(obj);
     }
