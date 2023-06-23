@@ -59,19 +59,13 @@
 .dropdown-container {
   display: flex;
   justify-content: flex-end;
+    margin-top: 20px;
 }
 
 .page-head-components {
   display: flex;
   border-bottom: 1px solid #f0f0f0;
-  padding: 15px 150px;
+  /* padding: 15px 150px; */
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .filters-heading {
-    display: flex;
-    width: 270px;
-    min-width: 260px;
-    justify-content: space-between;
 }

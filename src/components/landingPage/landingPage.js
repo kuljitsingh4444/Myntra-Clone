@@ -39,23 +39,24 @@ const LandingPage = () => {
     <div className="all-contents">
       <Header></Header>
       <div className="page-head-components">
-        <div className="filters-heading">
+        {/* <div className="filters-heading">
           <div>FILTERS</div>
           <div>CLEAR ALL</div>
           <div>FIX THIS</div>
-        </div>
-        <div className="dropdown-container">
-          <Dropdown
-            currentValue={state.reducer.filters.sortBy}
-            onChange={onChange}
-            options={options}
-            prefix={"Sort by: "}
-          ></Dropdown>
-        </div>
+        </div> */}
+
       </div>
       <div className="page-contents">
         <SideCart></SideCart>
         <div className="sellable-container">
+          <div className="dropdown-container">
+            <Dropdown
+              currentValue={state.reducer.filters.sortBy}
+              onChange={onChange}
+              options={options}
+              prefix={"Sort by: "}
+            ></Dropdown>
+          </div>
           <div className="sellable-content">
             {itemsList?.length &&
               itemsList.map((item, index) => {
