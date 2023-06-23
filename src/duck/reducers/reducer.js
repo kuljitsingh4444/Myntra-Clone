@@ -1,11 +1,13 @@
 import Types from "../types";
 import { PRICE, getUpperLimit } from "../../helpers/mock";
 
+const initialFilters = {
+  sortBy: { value: "popularityScore", label: "Popularity" },
+}
+
 const initialState = {
   response: [],
-  filters: {
-    sortBy: { value: "popularityScore", label: "Popularity" },
-  },
+  filters: initialFilters,
   displayList: [],
 };
 
@@ -102,6 +104,18 @@ export default function (state = initialState, action) {
 
     case Types.UPDATE_FILTERS:
       return handleFilters(state, action);
+
+    case Types.CLEAR_FILTERS:
+      const currentSort = state.filters.sortBy.value
+      return {
+        ...state,
+        response: state.response,
+        filters: initialFilters,
+        displayList: state.response.toSorted(
+          (a, b) =>
+            b[currentSort] - a[currentSort]
+        ),
+      }
 
     default:
       return state;

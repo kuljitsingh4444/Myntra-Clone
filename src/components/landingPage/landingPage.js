@@ -38,14 +38,6 @@ const LandingPage = () => {
   return (
     <div className="all-contents">
       <Header></Header>
-      <div className="page-head-components">
-        {/* <div className="filters-heading">
-          <div>FILTERS</div>
-          <div>CLEAR ALL</div>
-          <div>FIX THIS</div>
-        </div> */}
-
-      </div>
       <div className="page-contents">
         <SideCart></SideCart>
         <div className="sellable-container">
