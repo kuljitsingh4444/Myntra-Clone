@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./pagination.css";
-import { type } from "@testing-library/user-event/dist/type";
+import { scrollToTop, createArrayInRange } from "../../helpers/utils";
 import Types from "../../duck/types";
 
 const Pagination = () => {
@@ -9,15 +9,6 @@ const Pagination = () => {
   const { page, perPage } = pagination;
   const dispatch = useDispatch();
   const totalPages = Math.ceil(displayList.length / perPage);
-
-  const createArrayInRange = (start, end) => {
-    let array = [];
-    for (let i = start; i <= end; i++) {
-      array.push(i);
-    }
-    return array;
-  };
-
   const pages = createArrayInRange(1, totalPages);
 
   const updatePage = (pageNumber) => {
@@ -25,6 +16,7 @@ const Pagination = () => {
       type: Types.UPDATE_PAGE,
       data: pageNumber,
     });
+    scrollToTop();
   };
 
   const getButtonClass = () => {
@@ -35,6 +27,7 @@ const Pagination = () => {
 
     return classList;
   };
+
   return (
     <div className="pagination-container">
       <div className="page-info">
