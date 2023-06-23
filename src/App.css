@@ -15,3 +15,8 @@ body {
   height: 55px;
   margin-top: 5px;
 }
+
+.disabled-item {
+  pointer-events: none;
+  opacity: 0.5;
+}

@@ -1,14 +1,21 @@
 import Types from "../types";
 import { PRICE, getUpperLimit } from "../../helpers/mock";
 
+const perPage = 25;
+const initialPaginationInfo = {
+  page: 1,
+  perPage: perPage,
+};
+
 const initialFilters = {
   sortBy: { value: "popularityScore", label: "Popularity" },
-}
+};
 
 const initialState = {
   response: [],
   filters: initialFilters,
   displayList: [],
+  pagination: initialPaginationInfo,
 };
 
 const handleFilters = (state, action) => {
@@ -76,7 +83,7 @@ const handleFilters = (state, action) => {
     );
   });
 
-  const currentSortBy = newFilters.sortBy.value
+  const currentSortBy = newFilters.sortBy.value;
   const sortedDisplayList = displayList.toSorted(
     (a, b) => b[currentSortBy] - a[currentSortBy]
   );
@@ -86,19 +93,20 @@ const handleFilters = (state, action) => {
     response: state.response,
     filters: newFilters,
     displayList: sortedDisplayList,
+    pagination: initialPaginationInfo,
   };
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case Types.UPDATE_RESPONSE:
-      const currentSortBy = state.filters.sortBy.value
+      const currentSortBy = state.filters.sortBy.value;
       return {
         ...state,
+        pagination: initialPaginationInfo,
         response: action.data,
         displayList: action.data.toSorted(
-          (a, b) =>
-            b[currentSortBy] - a[currentSortBy]
+          (a, b) => b[currentSortBy] - a[currentSortBy]
         ),
       };
 
@@ -106,16 +114,25 @@ export default function (state = initialState, action) {
       return handleFilters(state, action);
 
     case Types.CLEAR_FILTERS:
-      const currentSort = state.filters.sortBy.value
+      const currentSort = state.filters.sortBy.value;
       return {
         ...state,
+        pagination: initialPaginationInfo,
         response: state.response,
         filters: initialFilters,
         displayList: state.response.toSorted(
-          (a, b) =>
-            b[currentSort] - a[currentSort]
+          (a, b) => b[currentSort] - a[currentSort]
         ),
-      }
+      };
+
+    case Types.UPDATE_PAGE:
+      return {
+        ...state,
+        pagination: {
+          page: action.data,
+          perPage: perPage,
+        },
+      };
 
     default:
       return state;

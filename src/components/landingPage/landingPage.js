@@ -6,6 +6,7 @@ import { getListData } from "../../helpers/mock";
 import { useSelector, useDispatch } from "react-redux";
 import Types from "../../duck/types";
 import Dropdown from "../common/dropdown/dropdown";
+import Pagination from "../pagination/pagination";
 
 const options = [
   { label: "Popularity", value: "popularityScore" },
@@ -16,8 +17,18 @@ const options = [
 const LandingPage = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
+  const pagination = state.reducer.pagination;
 
-  const itemsList = state.reducer.displayList;
+  const getPaginatedList = (list) => {
+    const { page, perPage } = pagination;
+    const fromIndex = perPage * (page - 1);
+    const toIndex = fromIndex + perPage - 1;
+    const subList = list.slice(fromIndex, toIndex + 1);
+
+    return subList;
+  };
+
+  const itemsList = getPaginatedList(state.reducer.displayList);
   const setDataToRedux = () => {
     getListData().then((response) => {
       dispatch({ type: Types.UPDATE_RESPONSE, data: response });
@@ -69,6 +80,7 @@ const LandingPage = () => {
                 );
               })}
           </div>
+          <Pagination></Pagination>
         </div>
       </div>
     </div>

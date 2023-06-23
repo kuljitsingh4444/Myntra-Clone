@@ -10,38 +10,38 @@ import Types from "../../duck/types";
 import { useEffect, useState } from "react";
 
 const SideCar = () => {
-  
-  const [reset, resetApplication] = useState(false)
-  const dispatch = useDispatch()
+  const [reset, resetApplication] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if(reset){
-      resetApplication(false)
+    if (reset) {
+      resetApplication(false);
     }
-  }, [reset])
+  }, [reset]);
 
   const clearFilters = () => {
     dispatch({
-      type: Types.CLEAR_FILTERS
-    })
-    resetApplication(true)
-  }
+      type: Types.CLEAR_FILTERS,
+    });
+    resetApplication(true);
+  };
 
   const getVisibility = () => {
     let visibility;
-    reset ? visibility = "hidden" : visibility = "visible"
-    return { visibility }
-  }
+    reset ? (visibility = "hidden") : (visibility = "visible");
+    return { visibility };
+  };
 
   return (
     <div>
       <div className="filter-options">
         <div>FILTERS</div>
-        <div onClick={() => clearFilters()} className="clear-all">CLEAR ALL</div>
+        <div onClick={() => clearFilters()} className="clear-all">
+          CLEAR ALL
+        </div>
       </div>
       <div className="side-cart">
-        {
-          !reset &&
+        {!reset && (
           <div style={getVisibility()}>
             <Gener></Gener>
             <div className="separator"></div>
@@ -56,7 +56,7 @@ const SideCar = () => {
             <div className="side-header options-header">DISCOUNT RANGE</div>
             <Discounts></Discounts>
           </div>
-        }
+        )}
       </div>
     </div>
   );
