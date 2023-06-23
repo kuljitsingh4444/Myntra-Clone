@@ -60,27 +60,39 @@ const LandingPage = () => {
               prefix={"Sort by: "}
             ></Dropdown>
           </div>
-          <div className="sellable-content">
-            {itemsList?.length &&
-              itemsList.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <img className="item-image" src={item.image}></img>
-                    <div className="item-detail">
-                      <div className="item-brand">{item.brand}</div>
-                      <div className="shade">
-                        <div className="item-extra">{`${item.gener} ${item.category} (${item.color})`}</div>
+          {itemsList && itemsList.length == 0 ? (
+            <div className="no-data">
+              <div className="no-data-text">
+                Nothing to see here, Come back later or clear all filters!
+              </div>
+              <img src="https://constant.myntassets.com/web/assets/img/11488523304066-search404.png" />
+            </div>
+          ) : (
+            <React.Fragment>
+              <div className="sellable-content">
+                {itemsList &&
+                  itemsList.length &&
+                  itemsList.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        <img className="item-image" src={item.image}></img>
+                        <div className="item-detail">
+                          <div className="item-brand">{item.brand}</div>
+                          <div className="shade">
+                            <div className="item-extra">{`${item.gener} ${item.category} (${item.color})`}</div>
+                          </div>
+                          <div className="cash-details">
+                            <div className="item-metadata">{`Rs. ${item.price}`}</div>
+                            <div className="item-discount">{`(${item.discount}% off)`}</div>
+                          </div>
+                        </div>
                       </div>
-                      <div className="cash-details">
-                        <div className="item-metadata">{`Rs. ${item.price}`}</div>
-                        <div className="item-discount">{`(${item.discount}% off)`}</div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
-          <Pagination></Pagination>
+                    );
+                  })}
+              </div>
+              {itemsList?.length && <Pagination></Pagination>}
+            </React.Fragment>
+          )}
         </div>
       </div>
     </div>
