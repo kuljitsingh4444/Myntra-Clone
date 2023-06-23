@@ -74,7 +74,7 @@ const LandingPage = () => {
                   itemsList.length &&
                   itemsList.map((item, index) => {
                     return (
-                      <div key={index}>
+                      <div className="selectable-card" key={index}>
                         <div className="image-contents">
                           <img className="item-image" src={item.image}></img>
                           <div className="overlay-items">
