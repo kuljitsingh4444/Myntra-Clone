@@ -5,7 +5,7 @@ General Instructions:
 2. All of the mock data is generated when app is loaded. Data generation code is in "mock.js". Only images are generated from web links ( rest of data is hardcoded in mock.js )
 3. All the components for filters, buttons, radios, checkboxes, etc have been created with re-usability in mind.
 4. App is developed for screen sizes 1920x1080 ( I have experience with media queries for responsive designs but I have kept the scope of the project simple )
-5. Keeping scope of project in mind in have made the directory structure as modular as needed.
+5. Keeping scope of project in mind i have made the directory structure as modular as needed.
 
 How to Run:
 
