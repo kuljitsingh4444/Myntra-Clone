@@ -13,6 +13,7 @@ const options = [
   { label: "Popularity", value: "popularityScore" },
   { label: "Trending", value: "trendingScore" },
   { label: "Recommended", value: "recommendationScore" },
+  { label: "Rating", value: "rating" },
 ];
 
 const LandingPage = () => {

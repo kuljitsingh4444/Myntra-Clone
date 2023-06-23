@@ -2,3 +2,4 @@
 2. Created using React CLI with Redux for state manegement.
 3. handle empty view and empty pagin - last point to extra
 4. sort by rating is extra
+test & make responsive
