@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Types from "../../duck/types";
 import Dropdown from "../common/dropdown/dropdown";
 import Pagination from "../pagination/pagination";
+import WishListButton from "../common/wishlistButton/wishlistButton";
 
 const options = [
   { label: "Popularity", value: "popularityScore" },
@@ -80,6 +81,10 @@ const LandingPage = () => {
                           <div className="overlay-items">
                             <div className="rating">{item.rating}</div>
                             <div className="star-icon">&#9733;</div>
+                          </div>
+                          <div className="overlay-wishlist">
+                            <WishListButton></WishListButton>
+                            <div className="free-size">Size: Free Size</div>
                           </div>
                         </div>
                         <div className="item-detail">

@@ -87,7 +87,7 @@
   position: absolute;
   bottom: 15px;
   left: 12px;
-  background: hsla(0, 0%, 100%, .5);
+  background: hsla(0, 0%, 100%, 0.5);
   padding: 2px 4px;
   border-radius: 4px;
   color: black;
@@ -96,6 +96,22 @@
   align-items: center;
 }
 
+.overlay-wishlist {
+  position: absolute;
+  bottom: -25px;
+  left: 0px;
+  background: white;
+  z-index: 3;
+  width: 100%;
+  visibility: hidden;
+  transition: height 300ms;
+  height: 0px;
+}
+
+.selectable-card:hover .overlay-wishlist {
+  visibility: visible;
+  height: 66px;
+}
 .rating {
   font-size: 12px;
   font-weight: 500;
@@ -105,8 +121,14 @@
   color: green;
   font-size: 16px;
 }
+.free-size {
+  padding-left: 10px;
+  font-size: 13px;
+  color: #535766;
+  font-weight: 300;
+}
 .selectable-card:hover {
-  box-shadow: 0 2px 16px 4px rgba(40, 44, 63, .07);
+  box-shadow: 0 2px 16px 4px rgba(40, 44, 63, 0.07);
   cursor: pointer;
   width: fit-content;
 }
